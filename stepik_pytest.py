@@ -3,7 +3,9 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-
+# stepik3.2 - 3.3
+# запуск в консоли unittest - python stepik_pytest.py
+# запуск в консоли pytest - pytest stepik_pytest.py
 class TestText(unittest.TestCase):
     def test_text1(self):
         link = "http://suninjuly.github.io/registration1.html"
