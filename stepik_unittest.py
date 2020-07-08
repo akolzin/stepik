@@ -4,8 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-class TestAbs(unittest.TestCase):
-    def test_abs1(self):
+class TestText(unittest.TestCase):
+    def test_text1(self):
         link = "http://suninjuly.github.io/registration1.html"
 
         try:
@@ -24,16 +24,15 @@ class TestAbs(unittest.TestCase):
             input4 = browser.find_element(By.CSS_SELECTOR,
                                           "body > div > form > div.second_block > div.form-group.second_class > input")
             input4.send_keys("Russia")
-            time.sleep(3)
             button = browser.find_element(By.XPATH, "/html/body/div/form/button")
             button.click()
 
         finally:
             # закрываем браузер после всех манипуляций
-            # time.sleep(8)
+            time.sleep(3)
             browser.quit()
 
-    def test_abs2(self):
+    def test_text2(self):
         link = "http://suninjuly.github.io/registration2.html"
 
         try:
@@ -52,15 +51,16 @@ class TestAbs(unittest.TestCase):
             input4 = browser.find_element(By.CSS_SELECTOR,
                                           "body > div > form > div.second_block > div.form-group.second_class > input")
             input4.send_keys("Russia")
-            time.sleep(3)
             button = browser.find_element(By.XPATH, "/html/body/div/form/button")
             button.click()
 
         finally:
             # закрываем браузер после всех манипуляций
-            # time.sleep(8)
+            time.sleep(3)
             browser.quit()
-
 
 if __name__ == "__main__":
     unittest.main()
+    # test_text1()
+    # test_text2()
+    # print("Everything passed")
