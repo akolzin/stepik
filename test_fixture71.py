@@ -31,7 +31,7 @@ def test_guest_should_see_login_link(browser, language):
     input3 = browser.find_element_by_tag_name("textarea")
     # input3.click()
     # time.sleep(2)
-    answer = math.log(int(time.time() - 658))
+    answer = math.log(int(time.time()))
     input3.send_keys(str(answer))
     # time.sleep(2)
     input1 = browser.find_element_by_xpath("//section/div/div[2]/div[4]/button")
