@@ -27,10 +27,10 @@ class TestExample:
         json_data = json.loads(response.text)
         path = json_data["main"]
         path1 = path['temp_max']
-        path2 = path['temp_min']
+        path2 = json_data["main"]["temp_min"]
         print(json_data)
-        print(path)
         print(path1)
+        print(path2)
         assert 'main' in json_data
         assert path1 > path2
 
