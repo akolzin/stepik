@@ -4,7 +4,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-link = "http://172.16.3.35:8088/customers"
+link = "http://media.test.itass.local/customers/presetNew"
 
 
 @pytest.fixture(scope="function")
