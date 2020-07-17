@@ -40,17 +40,17 @@ class TestMainPage1():
         assert status == "Анкета не отправлена"
         input = browser.find_element_by_css_selector("#name")
         input.send_keys(name)
-        input = browser.find_element_by_css_selector("#root > div > div.src-components-tabs-tabs-styles__wrapper > form > article:nth-child(3) > section > div > div:nth-child(6) > div > div > div > div")
+        input = browser.find_element_by_css_selector("#root > div > div.MDTTD808z7GuhtYhNCiyx > form > article:nth-child(3) > section > div > div:nth-child(5) > div > div > div > div > div")
         input.click()
-        input = browser.find_element_by_css_selector("#modal-root > div > div > div.src-components-calendar-body-body-styles__body > div.src-components-calendar-body-body-styles__scroll-container > div > div > div:nth-child(4) > div > div.src-components-calendar-month-month-styles__month-days > div:nth-child(3) > div:nth-child(5)")
+        input = browser.find_element_by_css_selector("#root > div > div.MDTTD808z7GuhtYhNCiyx > form > article:nth-child(3) > section > div > div:nth-child(6) > div > div > div > div")
         input.click()
         input = browser.find_element(By.XPATH, "//*[@id='email']")
         input.send_keys(email)
 
-        input = browser.find_element_by_css_selector("#root > div > div.src-components-tabs-tabs-styles__wrapper > form > article:nth-child(3) > section > div > div:nth-child(5) > div > div > div > div > div")
-        input.click()
-        input = browser.find_element(By.XPATH,"//*[@id='root']/div/div[3]/form/article[1]/section/div/div[5]/div/div/div/div/div/div[2]/div/div[1]/div[1]")
-        input.click()
+        # input = browser.find_element_by_css_selector("#root > div > div.src-components-tabs-tabs-styles__wrapper > form > article:nth-child(3) > section > div > div:nth-child(5) > div > div > div > div > div")
+        # input.click()
+        # input = browser.find_element(By.XPATH,"//*[@id='root']/div/div[3]/form/article[1]/section/div/div[5]/div/div/div/div/div/div[2]/div/div[1]/div[1]")
+        # input.click()
         input = browser.find_element(By.XPATH, "//*[@id='phone1']")
         input.send_keys(phone)
 
