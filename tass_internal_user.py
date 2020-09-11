@@ -156,14 +156,10 @@ class TestMainPage1():
 
     # создание внутреннего клиента
     @pytest.mark.parametrize('name, email, phone, adres, id, city, inn, kpp',
-                             [("ivan-", "test1@yandex.ru", 79992244333, "adres", 12345, "city", 2020202033,
-                               222444881),
-                              ("petr-", "test2@yandex.ru", 79992244333, "adres", 12345, "city", 2020202032,
-                               222444882),
-                              ("sony-", "test3@yandex.ru", 79992244333, "adres", 12345, "city", 2020202023,
-                               222444883),
-                              (
-                              "dc-", "test4@yandex.ru", 79992244333, "adres", 12345, "city", 2020202024, 222444884)])
+                             [("ivan-", "test1@yandex.ru", 79992244333, "adres", 12345, "city", 2020202033, 222444881),
+                              ("petr-", "test2@yandex.ru", 79992244333, "adres", 12345, "city", 2020202032, 222444882),
+                              ("sony-", "test3@yandex.ru", 79992244333, "adres", 12345, "city", 2020202023, 222444883),
+                              ("dc-", "test4@yandex.ru", 79992244333, "adres", 12345, "city", 2020202024, 222444884)])
     def test_guest(self, browser, name, email, phone, adres, id, city, inn, kpp):
         browser.get(link)
         time.sleep(2)
