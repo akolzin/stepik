@@ -23,12 +23,12 @@ link = "http://media.test.itass.local/customers"
 # class TestMainPage1():
 # вызываем фикстуру в тесте, передав ее как параметр
 # создание внутреннего клиента
-@pytest.mark.parametrize('selector, value, phone, value1, id, city, inn, kpp',
-                         [("#name", "test1@yandex.ru", 79992244333, "test1@yandex.r", 12345, "city", 2020202033, 222444881),
+@pytest.mark.parametrize('selector, value, selector1, value1, selector2, value2, selector3, value3',
+                         [("#name", "test1@yandex.ru", "#email", "teывап2@yanывапdex.ru", "#phone1", "test3@yandex.ru", "#site", "test4@yandex.ru"),
                           ("#email", "teывап2@yanывапdex.ru", 79992244333, "teывап2@yanывапdex.r", 12345, "city", 2020202032, 222444882),
                           ("#phone1", "test3@yandex.ru", 79992244333, "test3@yandex.r", 12345, "city", 2020202023, 222444883),
                           ("#site", "test4@yandex.ru", 79992244333, "test4@yandex.r", 12345, "city", 2020202024, 222444884)])
-def test_guest(browser, selector, value, phone, value1, id, city, inn, kpp):
+def test_guest(browser, selector, value, selector1, value1, selector2, value2, selector3, value3):
     # browser.get(link)
     # time.sleep(2)
     # browser.find_element_by_id("details-button").click()
@@ -47,8 +47,13 @@ def test_guest(browser, selector, value, phone, value1, id, city, inn, kpp):
     input.click()
     time.sleep(1)
 
+    mass_selector = [selector, selector1, selector2, selector3]
+    mass_value = [value, value1, value2, value3]
+
     # input = browser.find_element(By.XPATH, "// *[ @ id = 'root'] / div / div[3] / form / article[1] / section / div / div[1] / label / div / div")
     # input.click()
+
+
     input = browser.find_element(By.XPATH, "//*[@id='root']/div/div/div/div[3]/form/div[1]/span[2]")
     status = input.text
     assert status == "Анкета не отправлена"
@@ -58,45 +63,56 @@ def test_guest(browser, selector, value, phone, value1, id, city, inn, kpp):
         "#root > div > div > div > div.MDTTD808z7GuhtYhNCiyx > form > section:nth-child(3) > section > div > div._2z02StXLta1l1pMy9RZjqn._2KqIDt_bTCe7sb8_y5pdt0._3vXHzL1qtcips0rxKwEhuQ > label > div")
     input.click()
 
-    # поля
-    input = browser.find_element_by_css_selector(selector)
-    input.send_keys(value)
+    i = 0
+    for ii in mass_selector:
 
-    # клик по кнопке сохранить
-    browser.find_element_by_css_selector(
-        "#root > div > div > div > div.MDTTD808z7GuhtYhNCiyx > form > div.IKVnscL2xZb4_HAppSRik > div > div > button._1JPTNwXTDV_vLByphy1l-O.M9c1UcWhIvzGEP-ZtlSLa._2bMXaBwkLZj8rpG7EdgcRt").click()
-    time.sleep(2)
-    browser.execute_script('window.scrollTo(0,0);')
+        # поля
+        input = browser.find_element_by_css_selector(mass_selector[i])
+        input.send_keys(mass_value[i])
 
-    # проверка на наличие надписи "Некорректное значение"
-    input1 = browser.find_element_by_class_name("_2BdPeWfKXp-TXCYIUAZiad")
-    status1 = input1.text
-    assert status1 == "Некорректное значение"
-    time.sleep(3)
+        # клик по кнопке сохранить
+        browser.find_element_by_css_selector(
+            "#root > div > div > div > div.MDTTD808z7GuhtYhNCiyx > form > div.IKVnscL2xZb4_HAppSRik > div > div > button._1JPTNwXTDV_vLByphy1l-O.M9c1UcWhIvzGEP-ZtlSLa._2bMXaBwkLZj8rpG7EdgcRt").click()
+        time.sleep(2)
+        browser.execute_script('window.scrollTo(0,0);')
 
-    # преписка к значению в поле(изменение поля)
-    input = browser.find_element_by_css_selector(selector)
-    input.send_keys("f")
+        # проверка на наличие надписи "Некорректное значение"
+        input1 = browser.find_element_by_class_name("_2BdPeWfKXp-TXCYIUAZiad")
+        status1 = input1.text
+        assert status1 == "Некорректное значение"
+        time.sleep(3)
 
-    basket_page = BasketPage(browser, browser.current_url)
-    basket_page.is_basket_empty()
+        # преписка к значению в поле(изменение поля)
+        input = browser.find_element_by_css_selector(mass_selector[i])
+        input.send_keys("f")
 
-    base_page = BasePage(browser, browser.current_url)
-    assert base_page.is_element_present(By.CLASS_NAME, "_2BdPeWfKXp-TXCYIUAZiad")
+        base_page = BasePage(browser, browser.current_url)
+        assert base_page.is_element_present(By.CLASS_NAME, "_2BdPeWfKXp-TXCYIUAZiad")
 
-    # проверка на наличие элемента на странице
-    red = True
-    try:
-        browser.find_element_by_class_name("_2BdPeWfKXp-TXCYIUAZiad")
-    except NoSuchElementException:
-        red = False
-    assert red == True
+        base_page = BasePage(browser, browser.current_url)
+        assert base_page.is_element_present(By.LINK_TEXT, "Некорректное значение") == False
 
-    red = True
-    try:
-        browser.find_element_by_link_text("Некорректное значение")
-    except NoSuchElementException:
-        red = False
-    assert red == False
-    time.sleep(3)
+        input = browser.find_element_by_css_selector(mass_selector[i])
+        input.clear()
+        i = i + 1
+
+
+    # basket_page = BasketPage(browser, browser.current_url)
+    # basket_page.is_basket_empty()
+    #
+    # # проверка на наличие элемента на странице
+    # red = True
+    # try:
+    #     browser.find_element_by_class_name("_2BdPeWfKXp-TXCYIUAZiad")
+    # except NoSuchElementException:
+    #     red = False
+    # assert red == True
+    #
+    # red = True
+    # try:
+    #     browser.find_element_by_link_text("Некорректное значение")
+    # except NoSuchElementException:
+    #     red = False
+    # assert red == False
+    # time.sleep(3)
 
