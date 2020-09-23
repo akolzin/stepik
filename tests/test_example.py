@@ -7,6 +7,7 @@ import requests
 
 link = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=68d9c6557101f408224e83aa3c323c11"
 link1 = "https://restful-booker.herokuapp.com"
+link2 = "http://5.227.126.79:9200/mediadev-elvis-metadata-avm/_search"
 response = requests.get(link1)
 
 class TestExample:
@@ -35,6 +36,16 @@ class TestExample:
         assert path1 > path2
 
     def test2(self, client):
+        response = requests.get(link2)
+        json_data = json.loads(response.text)
+        path = json_data["main"]
+        path1 = path['temp_max']
+        path2 = json_data["main"]["temp_min"]
+        print(json_data)
+        print(path1)
+        print(path2)
+        assert 'main' in json_data
+        assert path1 > path2
         print()
 
     def test_create_new_booking(self, client):
