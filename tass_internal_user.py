@@ -32,7 +32,7 @@ class TestMainPage1():
         # driver.get("http://media.test.itass.local")
         browser.find_element_by_id("userNameInput").send_keys("ext_kolzin_a")
         time.sleep(1)
-        browser.find_element_by_id("passwordInput").send_keys("")
+        browser.find_element_by_id("passwordInput").send_keys(" ")
         browser.find_element_by_id("submitButton").click()
         time.sleep(2)
         input = browser.find_element_by_css_selector("#root > div > div > div > header > a > button")
