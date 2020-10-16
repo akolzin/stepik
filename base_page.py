@@ -22,7 +22,7 @@ class BasePage():
         # driver.get("http://media.test.itass.local")
         self.browser.find_element_by_id("userNameInput").send_keys("ext_kolzin_a")
         time.sleep(1)
-        self.browser.find_element_by_id("passwordInput").send_keys("")
+        self.browser.find_element_by_id("passwordInput").send_keys("Overlor1")
         self.browser.find_element_by_id("submitButton").click()
 
     def is_element_present(self, how, what):

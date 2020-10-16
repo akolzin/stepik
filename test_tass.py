@@ -61,7 +61,7 @@ def test_guest(browser, flag, links, buttons, selector, value, selector1, value1
 
         # переключение на внутреннего клиента
         input = browser.find_element_by_css_selector(
-            "#root > div > div > div > div.MDTTD808z7GuhtYhNCiyx > form > section:nth-child(3) > section > div > div._2z02StXLta1l1pMy9RZjqn._2KqIDt_bTCe7sb8_y5pdt0._3vXHzL1qtcips0rxKwEhuQ > label > div")
+            "label._1B_rCW-HdhdsZBqdHkrllC")
         input.click()
 
     if flag == "user":

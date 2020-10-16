@@ -20,3 +20,4 @@
 [0703/125340.549:ERROR:exception_snapshot_win.cc(98)] thread ID 23060 not found in process
 [0703/125340.555:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
 [0703/125340.555:ERROR:exception_snapshot_win.cc(98)] thread ID 19000 not found in process
+[1016/192014.169:ERROR:exception_handler_server.cc(524)] ConnectNamedPipe: Идет закрытие канала. (0xE8)
